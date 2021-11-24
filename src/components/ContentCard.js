@@ -2,9 +2,7 @@ import Button from "./Button";
 import "../App.css";
 
 const ContentCard = () => {
-  const onClicked = () => {
-    console.log("Button Clicked");
-  };
+  const onClicked = () => {};
   return (
     <div>
       <h3>Pokemon Name</h3>
