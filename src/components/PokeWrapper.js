@@ -1,9 +1,9 @@
 import "../App.css";
 import Button from "./Button";
-import ContentCard from "./ContentCard";
+import ContentCard from "./PokemonCard";
 
 const ContentPage = ({ pokeData }) => {
-  const bing = true;
+  const bing = false;
 
   const onClick = () => {
     pokeData(bing);
