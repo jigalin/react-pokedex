@@ -23,6 +23,7 @@
   font-family: "Press Start 2P";
   color: rgb(255, 255, 255);
   font-size: 14px;
+  text-shadow: 2px 2px 7px black;
 }
 
 .btn-small {

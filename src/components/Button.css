@@ -1,14 +1,38 @@
-.btn-default {
+.btn-default,
+.btn-onwhite {
   font-size: 10px;
   padding: 10px;
-  margin: 10px;
   border-radius: 30px;
   font-family: "Press Start 2P";
-  border: none;
-  background-color: transparent;
+  transition: background-color 1s;
+}
+
+.btn-default {
+  margin: 10px;
   border: 2px solid rgb(255, 255, 255);
   color: rgb(255, 255, 255);
+  background-color: transparent;
+  text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.8);
+}
+
+.btn-onwhite {
+  border: 3px solid #18437c;
+  color: #ffcb05;
+  background-color: #2f6eb5;
   transition: background-color 1s;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 800;
+  font-size: 18px;
+  padding: 5px;
+  padding-left: 30px;
+  padding-right: 30px;
+  margin-left: 15px;
+  margin-right: 15px;
+}
+
+.btn-onwhite:hover {
+  background-color: #ffcb05;
+  color: #2f6eb5;
 }
 
 .btn-default:hover {

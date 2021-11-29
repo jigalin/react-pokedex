@@ -1,23 +1,48 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Button from "./Button";
 import "./PokemonCard.css";
 import heartBtnClicked from "../assets/heart_btn_clicked.png";
 import heartBtnDefault from "../assets/heart_btn_default.png";
 import ShinyBtnDefault from "../assets/shiny_btn_default.png";
-import ShinyBtnClicked from "../assets/shiny_btn_default.png";
+import ShinyBtnClicked from "../assets/shiny_btn_clicked.png";
+import typeData from "../assets/type-color-data.json";
 
-const PokemonCard = ({ individualPokemon, togglePokeFav }) => {
+const PokemonCard = ({
+  individualPokemon,
+  togglePokeFav,
+  shinyToggle,
+  updateFavCount,
+}) => {
   const [localFav, setLocalFav] = useState([individualPokemon.isFav]);
-  var shiny = false;
+  const [localShinyShown, setLocalShinyShown] = useState([
+    individualPokemon.shinyShown,
+  ]);
+  const [pokeImg, setPokeImg] = useState(
+    individualPokemon.sprites.front_default
+  );
+  const [shinyImg, setShinyImg] = useState(
+    individualPokemon.sprites.front_shiny
+  );
 
   const triggerToggleFav = () => {
     togglePokeFav(individualPokemon);
     setLocalFav(!localFav);
+    updateFavCount(localFav ? 1 : -1);
   };
 
   const triggerToggleShiny = () => {
-    shiny = !shiny;
-    console.log(shiny);
+    shinyToggle(individualPokemon);
+    setLocalShinyShown(!localShinyShown);
+  };
+
+  const showBack = () => {
+    if (individualPokemon.sprites.front_default === pokeImg) {
+      setPokeImg(individualPokemon.sprites.back_default);
+      setShinyImg(individualPokemon.sprites.back_shiny);
+    } else {
+      setPokeImg(individualPokemon.sprites.front_default);
+      setShinyImg(individualPokemon.sprites.front_shiny);
+    }
   };
 
   return (
@@ -40,7 +65,9 @@ const PokemonCard = ({ individualPokemon, togglePokeFav }) => {
           <button className="btn-small">
             <img
               className="btn-small-img"
-              src={shiny ? ShinyBtnDefault : ShinyBtnClicked}
+              src={
+                individualPokemon.shinyShown ? ShinyBtnClicked : ShinyBtnDefault
+              }
               alt="heart"
               onClick={triggerToggleShiny}
             />
@@ -57,17 +84,21 @@ const PokemonCard = ({ individualPokemon, togglePokeFav }) => {
           </button>
         </div>
       </div>
-
       <img
         className="poke-img"
-        src={individualPokemon.sprites.front_default}
+        src={individualPokemon.shinyShown ? shinyImg : pokeImg}
         alt={individualPokemon.name}
       />
       <h3 className="poke-name">{individualPokemon.name}</h3>
+
       <Button
         styleName="btn-default"
-        text="PREVIEW SHINY"
-        onClick={() => console.log(individualPokemon.isFav)}
+        text={
+          individualPokemon.sprites.front_default === pokeImg
+            ? "VIEW BACK"
+            : "VIEW FRONT"
+        }
+        onClick={showBack}
       />
       <div
         style={{
