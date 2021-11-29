@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
 import "./PokemonCard.css";
 import heartBtnClicked from "../assets/heart_btn_clicked.png";
@@ -8,7 +8,7 @@ import ShinyBtnClicked from "../assets/shiny_btn_default.png";
 
 const PokemonCard = ({ individualPokemon, togglePokeFav }) => {
   const [localFav, setLocalFav] = useState([individualPokemon.isFav]);
-  const [shinyShown, setShinyShown] = useState(false);
+  var shiny = false;
 
   const triggerToggleFav = () => {
     togglePokeFav(individualPokemon);
@@ -16,8 +16,10 @@ const PokemonCard = ({ individualPokemon, togglePokeFav }) => {
   };
 
   const triggerToggleShiny = () => {
-    setShinyShown(!shinyShown);
+    shiny = !shiny;
+    console.log(shiny);
   };
+
   return (
     <div
       className="poke-div"
@@ -38,7 +40,7 @@ const PokemonCard = ({ individualPokemon, togglePokeFav }) => {
           <button className="btn-small">
             <img
               className="btn-small-img"
-              src={shinyShown ? ShinyBtnDefault : ShinyBtnClicked}
+              src={shiny ? ShinyBtnDefault : ShinyBtnClicked}
               alt="heart"
               onClick={triggerToggleShiny}
             />
