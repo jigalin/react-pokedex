@@ -11,14 +11,13 @@ function App() {
   const fetchAllPokemonNames = async () => {
     try {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=200"
+        "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100"
       );
       const pokemonNames = await response.json();
       setAllPokemonNames(pokemonNames.results);
       console.log("pokemonNamesFetched", pokemonNames.results);
     } catch (error) {
       console.log(error);
-    } finally {
     }
   };
 
@@ -29,7 +28,7 @@ function App() {
         try {
           const indPokeData = await fetch(poke.url);
           const initFavData = await indPokeData.json();
-          return setPokemonFavourite(initFavData, false);
+          return setPokeFav(initFavData, false);
         } catch (error) {
           console.log(error);
         }
@@ -43,15 +42,23 @@ function App() {
   };
 
   // Set a given pokemon object with state 'Favourite' to true.
-  const setPokemonFavourite = (pokemon, favVal) => {
+  const setPokeFav = (pokemon, favVal) => {
     pokemon.isFav = favVal;
     return pokemon;
   };
 
-  // Debug function for prop drilling up data from components below.
-  const getChildData = (val) => {
-    console.log(val);
+  const togglePokeFav = (pokemon) => {
+    pokemon.isFav = !pokemon.isFav;
+    console.log(
+      "Pokemon is " + pokemon.name + " and fav state is " + pokemon.isFav
+    );
+    return pokemon;
   };
+
+  // Debug function for prop drilling up data from components below.
+  // const getChildData = (val) => {
+  //   console.log(val);
+  // };
 
   // Initial useEffect to call the fetchData above on firstload.
   useEffect(() => {
@@ -65,12 +72,12 @@ function App() {
     fetchAllPokemonData();
   }, [allPokemonNames]);
 
-  // Debug Button
+  // Debug Button 1 - call fetch pokedata function
   const debugButton1 = () => {
     fetchAllPokemonData();
   };
 
-  // Debug Button
+  // Debug Button 2 - log pokedata
   const debugButton2 = () => {
     console.log(allPokemonData);
   };
@@ -78,7 +85,10 @@ function App() {
   return (
     <div className="home-wrapper">
       <h1>Homepage</h1>
-      <PokeWrapper allPokemonData={allPokemonData} />
+      <PokeWrapper
+        allPokemonData={allPokemonData}
+        togglePokeFav={togglePokeFav}
+      />
       <h1>Debug Section</h1>
       <Button text="Fetch" onClick={debugButton1} color="green" />
       <Button text="Show" onClick={debugButton2} color="green" />

@@ -1,19 +1,21 @@
-import "../App.css";
-import Button from "./Button";
-import ContentCard from "./PokemonCard";
+import "./PokeWrapper.css";
+import PokemonCard from "./PokemonCard";
 
-const ContentPage = ({ pokeData }) => {
-  const bing = false;
-
-  const onClick = () => {
-    pokeData(bing);
-  };
-
+const ContentPage = ({ allPokemonData, togglePokeFav }) => {
   return (
-    <div className="content-wrapper">
+    <div>
       <h1>Content</h1>
-      <ContentCard />
-      <Button text="Send up Bing" onClick={onClick} />
+      <div className="content-wrapper">
+        {allPokemonData.map((individualPokemon) => {
+          return (
+            <PokemonCard
+              key={individualPokemon.name}
+              individualPokemon={individualPokemon}
+              togglePokeFav={togglePokeFav}
+            />
+          );
+        })}
+      </div>
     </div>
   );
 };

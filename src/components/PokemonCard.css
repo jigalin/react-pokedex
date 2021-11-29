@@ -1,0 +1,59 @@
+.poke-div {
+  width: 200px;
+  margin: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 0px 24px -5px rgba(0, 0, 0, 0.53);
+  box-shadow: 0px 0px 24px -5px rgba(0, 0, 0, 0.53);
+  /* background: radial-gradient(
+    circle,
+    rgba(182, 251, 63, 1) 0%,
+    rgba(70, 252, 114, 1) 100%
+  ); */
+  background: linear-gradient(
+      to top,
+      rgba(3, 252, 44, 0.9),
+      rgba(7, 234, 250, 0.85)
+    ),
+    url("../assets/PokePattern.png");
+  background-size: 100px;
+  /* background-image: url("../assets/PokePattern.png");
+  background-size: 100px;
+  background-blend-mode: overlay; */
+}
+
+.poke-name {
+  text-align: center;
+  text-transform: uppercase;
+  font-family: "Press Start 2P";
+  color: rgb(255, 255, 255);
+  font-size: 14px;
+}
+
+.btn-small {
+  width: 45px;
+  height: 45px;
+  border: none;
+  background-color: transparent;
+  margin: 10px;
+}
+
+.btn-small-img {
+  width: 100%;
+  transition: opacity 0.2s;
+}
+
+.btn-small-img:hover {
+  opacity: 50%;
+}
+
+.poke-bottom-card {
+  background-color: black;
+  width: 100%;
+  height: 115px;
+  opacity: 20%;
+  border-radius: 50px 5px 25px 25px;
+}

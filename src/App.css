@@ -1,11 +1,6 @@
 .home-wrapper {
-  width: 800px;
+  max-width: 1200px;
   border: 1px red solid;
   margin: auto;
 }
 
-.content-wrapper {
-  width: 800px;
-  border: 1px red solid;
-  display: inline-block;
-}

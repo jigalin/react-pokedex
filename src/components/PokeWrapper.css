@@ -1,0 +1,7 @@
+.content-wrapper {
+    border: 1px red solid;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
