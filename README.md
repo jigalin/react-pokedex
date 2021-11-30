@@ -1,23 +1,21 @@
-# Pokemon Viewer x Pokedex Webapp
+<div align="center">
+  <h1>🌿🔥<br>React Pokedex</h1>
+  <h3>A basic react one-pager showcasing REST interaction</h3>
+</div>
 
-Made with ReactJs, HTML & CSS. Current features include:
+<div align="center"><img src="https://user-images.githubusercontent.com/29565530/144050909-de512f97-3e38-4e69-9597-5d7eeceea3d3.gif" /></div>
+<div align="center">
+  <p>Basic css transition of opacity value on load</p>
+</div>
 
-- Search bar functionality WIP
-- You can toggle show all shinies on and off
-- Fixed pokemon call - you have to manually edit in the App.js how many Pokemon are fetched
-- Users can show / hide individual shinies
-- Ability to view back / front toggle of each pokemon
-- Custom logo ( made in Photoshop ) & imported fonts
-- Custom background image made in Photoshop.
+<br>
+<div align="center"><img src="https://user-images.githubusercontent.com/29565530/144051560-b31338b4-2318-4acb-8433-ee087203b74d.gif" /></div>
+<div align="center">
+  <p>Search functionality showcasing manipulating objects & updating stored REST API data</p>
+</div>
 
-Planned features / Developments:
-- Landing splash page
-- Load animation for both individual cards + when flipping a pokemon over (fade, translate etc)
+## 🛠️ Packages & APIs
 
----
-
-![Preview](https://i.imgur.com/tfHCZDI.png)
-
----
-
-# Enjoy! - Matt
+- [React](https://reactjs.org/)
+- [Styled Components](https://styled-components.com/)
+- [PokeAPI](https://pokeapi.co/)
