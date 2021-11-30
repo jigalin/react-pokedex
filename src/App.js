@@ -123,7 +123,7 @@ function App() {
       >
         <h1 style={{ fontWeight: "400", fontSize: "18px" }}>
           Website by{" "}
-          <a href="https://github.com/AbleSucculent2" target="_blank">
+          <a href="https://github.com/jigalin" target="_blank">
             Matthew Jigalin
           </a>
           . Made with react +{" "}
