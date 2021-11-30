@@ -4,7 +4,6 @@ import PokemonCard from "./PokemonCard";
 import Button from "./Button";
 import CoolSearchBar from "./CoolSearchBar";
 import PokemonViewerLogo from "../assets/PokemonViewer.png";
-import searchIcon from "../assets/search.png";
 
 const ContentPage = ({
   allPokemonData,
@@ -16,9 +15,7 @@ const ContentPage = ({
   const [shownPokemonData, setShownPokemonData] = useState(allPokemonData);
   const [favCount, setFavCount] = useState(0);
   const [showFavsOnly, setShowFavsOnly] = useState(false);
-  const [showFireOnly, setShowFireOnly] = useState(false);
   const [enteredVar, setEnteredVar] = useState(true);
-  const [cssFade, setCssFade] = useState("cssHidden");
 
   const updateFavCount = (int) => {
     console.log(favCount + int);
@@ -45,7 +42,21 @@ const ContentPage = ({
     }
   };
 
-  // BELOW: Working Logic for
+  const searchFunc = (input) => {
+    let value = input;
+    let result = [];
+    result = allPokemonData.filter((data) => {
+      return data.name.search(value) !== -1;
+    });
+    setShownPokemonData(result);
+  };
+
+  const resetPokeData = () => {
+    setShownPokemonData(allPokemonData);
+  };
+
+  // BELOW: Working Logic for sorting by types, left out for a later stage
+
   // const showFireFunc = () => {
   //   if (showFireOnly === false) {
   //     let fire = [];
@@ -62,7 +73,6 @@ const ContentPage = ({
 
   const enter = () => {
     setEnteredVar(false);
-    setCssFade("cssShown");
   };
 
   return (
@@ -101,7 +111,10 @@ const ContentPage = ({
           />
         </div>
         <div>
-          <CoolSearchBar />
+          <CoolSearchBar
+            searchFunc={searchFunc}
+            resetPokeData={resetPokeData}
+          />
         </div>
       </div>
       <div className="content-wrapper">

@@ -1,10 +1,6 @@
 import { useEffect, useState } from "react";
 import "./App.css";
 import PokeWrapper from "./components/PokeWrapper";
-import Button from "./components/Button";
-import PokemonViewerLogo from "./assets/PokemonViewer.png";
-import PokeSearch from "./components/PokeSearch";
-import CoolSearchBar from "./components/CoolSearchBar";
 
 function App() {
   const [allPokemonNames, setAllPokemonNames] = useState([]);
@@ -88,11 +84,6 @@ function App() {
     return pokemon;
   };
 
-  const onSearchBarChange = (e) => {
-    console.log(e);
-    return e;
-  };
-
   return (
     <div className="home-wrapper">
       <div className="header">
@@ -123,11 +114,11 @@ function App() {
       >
         <h1 style={{ fontWeight: "400", fontSize: "18px" }}>
           Website by{" "}
-          <a href="https://github.com/jigalin" target="_blank">
+          <a href="https://github.com/jigalin" target="_blank" rel="noreferrer">
             Matthew Jigalin
           </a>
           . Made with react +{" "}
-          <a href="https://pokeapi.co/" target="_blank">
+          <a href="https://pokeapi.co/" target="_blank" rel="noreferrer">
             PokeApi
           </a>
           .

@@ -1,5 +1,4 @@
-import React, { useState, useRef, useEffect } from "react";
-import ReactDOM from "react-dom";
+import React, { useState, useRef } from "react";
 import styled from "styled-components";
 import "./CoolSearchBar.css";
 import searchIcon from "../assets/search.png";
@@ -26,7 +25,7 @@ const Input = styled.input`
   line-height: 1;
   background-color: transparent;
   width: 100%;
-  margin-left: ${(props) => (props.barOpened ? "1rem" : "-1.5rem")};
+  margin-left: ${(props) => (props.barOpened ? "1rem" : "0rem")};
   border: none;
   color: white;
   transition: margin 300ms cubic-bezier(0.645, 0.045, 0.355, 1);
@@ -49,7 +48,7 @@ const SearchBtn = styled.button`
   color: white;
 `;
 
-const CoolSearch = () => {
+const CoolSearch = ({ searchFunc, resetPokeData }) => {
   const [input, setInput] = useState("");
   const [barOpened, setBarOpened] = useState(false);
   const formRef = useRef();
@@ -62,6 +61,7 @@ const CoolSearch = () => {
     setBarOpened(false);
     // After form submit, do what you want with the input value
     console.log(`Form was submited with input: ${input}`);
+    searchFunc(input);
   };
 
   return (
@@ -72,6 +72,7 @@ const CoolSearch = () => {
           // When form clicked, set state of baropened to true and focus the input
           setBarOpened(true);
           inputFocus.current.focus();
+          resetPokeData();
         }}
         // on focus open search bar
         onFocus={() => {

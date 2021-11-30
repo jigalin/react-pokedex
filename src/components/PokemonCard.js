@@ -5,7 +5,6 @@ import heartBtnClicked from "../assets/heart_btn_clicked.png";
 import heartBtnDefault from "../assets/heart_btn_default.png";
 import ShinyBtnDefault from "../assets/shiny_btn_default.png";
 import ShinyBtnClicked from "../assets/shiny_btn_clicked.png";
-import typeData from "../assets/type-color-data.json";
 
 const PokemonCard = ({
   individualPokemon,
@@ -28,7 +27,7 @@ const PokemonCard = ({
 
   useEffect(() => {
     initTypeData();
-    console.log(individualPokemon.name, individualPokemon.types[0].type.name);
+    // eslint-disable-next-line
   }, [individualPokemon]);
 
   const initTypeData = () => {
@@ -57,7 +56,7 @@ const PokemonCard = ({
   };
 
   return (
-    <div styleName={""}>
+    <div>
       <div
         className={typeVar}
         style={{
