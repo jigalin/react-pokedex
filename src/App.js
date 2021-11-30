@@ -3,6 +3,8 @@ import "./App.css";
 import PokeWrapper from "./components/PokeWrapper";
 import Button from "./components/Button";
 import PokemonViewerLogo from "./assets/PokemonViewer.png";
+import PokeSearch from "./components/PokeSearch";
+import CoolSearchBar from "./components/CoolSearchBar";
 
 function App() {
   const [allPokemonNames, setAllPokemonNames] = useState([]);
@@ -86,6 +88,11 @@ function App() {
     return pokemon;
   };
 
+  const onSearchBarChange = (e) => {
+    console.log(e);
+    return e;
+  };
+
   return (
     <div className="home-wrapper">
       <div className="header">
@@ -93,19 +100,10 @@ function App() {
           style={{
             width: "100%",
             display: "flex",
-            justifyContent: "center",
+            justifyContent: "space-between",
+            alignItems: "center",
           }}
-        >
-          <img
-            src={PokemonViewerLogo}
-            style={{
-              width: "300px",
-              padding: "20px",
-              marginTop: "20px",
-            }}
-            alt="Pokemon Viewer Logo"
-          />
-        </div>
+        ></div>
       </div>
 
       <PokeWrapper
@@ -115,6 +113,26 @@ function App() {
         shinyShowState={shinyShowState}
         showAllShiny={showAllShiny}
       />
+      <div
+        style={{
+          width: "100%",
+          display: "flex",
+          justifyContent: "center",
+          paddingBottom: "50px",
+        }}
+      >
+        <h1 style={{ fontWeight: "400", fontSize: "18px" }}>
+          Website by{" "}
+          <a href="https://github.com/AbleSucculent2" target="_blank">
+            Matthew Jigalin
+          </a>
+          . Made with react +{" "}
+          <a href="https://pokeapi.co/" target="_blank">
+            PokeApi
+          </a>
+          .
+        </h1>
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "./Button";
 import "./PokemonCard.css";
 import heartBtnClicked from "../assets/heart_btn_clicked.png";
@@ -23,6 +23,16 @@ const PokemonCard = ({
   const [shinyImg, setShinyImg] = useState(
     individualPokemon.sprites.front_shiny
   );
+  const [typeVar, setTypeVar] = useState();
+
+  useEffect(() => {
+    initTypeData();
+    console.log(individualPokemon.name, individualPokemon.types[0].type.name);
+  }, [individualPokemon]);
+
+  const initTypeData = () => {
+    setTypeVar(individualPokemon.types[0].type.name);
+  };
 
   const triggerToggleFav = () => {
     togglePokeFav(individualPokemon);
@@ -47,7 +57,7 @@ const PokemonCard = ({
 
   return (
     <div
-      className="poke-div"
+      className={typeVar}
       style={{
         zIndex: 0,
       }}
@@ -90,7 +100,6 @@ const PokemonCard = ({
         alt={individualPokemon.name}
       />
       <h3 className="poke-name">{individualPokemon.name}</h3>
-
       <Button
         styleName="btn-default"
         text={

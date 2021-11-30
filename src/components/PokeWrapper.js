@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import "./PokeWrapper.css";
 import PokemonCard from "./PokemonCard";
 import Button from "./Button";
+import CoolSearchBar from "./CoolSearchBar";
+import PokemonViewerLogo from "../assets/PokemonViewer.png";
 
 const ContentPage = ({
   allPokemonData,
@@ -44,27 +46,49 @@ const ContentPage = ({
       <div
         style={{
           display: "flex",
-          justifyContent: "center",
-          paddingTop: "10px",
-          paddingBottom: "10px",
+          justifyContent: "space-between",
+          padding: "45px",
+          paddingTop: "20px",
+          paddingBottom: "40px",
+          alignItems: "center",
+          alignContent: "flex-start",
         }}
       >
-        <Button
-          onClick={showFavsFunc}
-          text="Show Favourites"
-          styleName="btn-onwhite"
-        />
-        <Button
-          onClick={showAllShiny}
-          text={shinyShowState ? "Show Shinies" : "Hide Shinies"}
-          styleName="btn-onwhite"
-        />
+        <div style={{ display: "flex", alignItems: "center" }}>
+          <img
+            src={PokemonViewerLogo}
+            style={{
+              height: "100px",
+              paddingRight: "30px",
+            }}
+            alt="Pokemon Viewer Logo"
+          />
+          <Button
+            onClick={showFavsFunc}
+            text={showFavsOnly ? "Hide Favourites" : "Show Favourites"}
+            styleName="btn-onwhite"
+          />
+          <Button
+            onClick={showAllShiny}
+            text={shinyShowState ? "Show Shinies" : "Hide Shinies"}
+            styleName="btn-onwhite-secondary"
+          />
+        </div>
+        <div>
+          <CoolSearchBar />
+        </div>
       </div>
       <div className="content-wrapper">
         <div style={{ width: "100%" }}>
           {showFavsOnly && (
-            <h1 style={{ textAlign: "center", paddingTop: "50px" }}>
-              {favCount === 0 ? "Oops... Nothing to show!" : ""}
+            <h1
+              style={{
+                textAlign: "center",
+                paddingTop: "50px",
+                paddingBottom: "50px",
+              }}
+            >
+              {favCount === 0 ? "Oops... You have no favourited Pokemon!" : ""}
             </h1>
           )}
         </div>
