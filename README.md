@@ -14,4 +14,10 @@ Planned features / Developments:
 - Landing splash page
 - Load animation for both individual cards + when flipping a pokemon over (fade, translate etc)
 
+-
+
 ![Preview](https://i.imgur.com/tfHCZDI.png)
+
+-
+
+Enjoy!
