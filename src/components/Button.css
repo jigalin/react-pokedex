@@ -67,3 +67,25 @@
 .btn-default:hover {
   background-color: rgba(255, 255, 255, 0.5);
 }
+
+.btn-enter {
+  padding: 10px;
+  border-radius: 30px;
+  font-family: "Press Start 2P";
+  border: 2px solid #18437c;
+  color: white;
+  background: #18437c;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  padding-left: 50px;
+  padding-right: 50px;
+  transition: background 1s;
+  transition: border 1s;
+}
+
+.btn-enter:hover {
+  background: #ffcb05;
+  color: #2f6eb5;
+  border: 2px solid #ffcb05;
+}

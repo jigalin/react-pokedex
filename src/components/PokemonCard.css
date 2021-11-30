@@ -16,6 +16,7 @@
 .ice,
 .dragon,
 .dark {
+  opacity: 1;
   width: 200px;
   margin: 15px;
   margin-bottom: 20px;
@@ -197,4 +198,46 @@
   height: 115px;
   opacity: 20%;
   border-radius: 50px 5px 25px 25px;
+}
+
+.cssHidden {
+  transition: opacity 1s;
+  opacity: 0.1;
+  pointer-events: none;
+  width: 200px;
+  margin: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 0px 24px -5px rgba(0, 0, 0, 0.53);
+  box-shadow: 0px 0px 24px -5px rgba(0, 0, 0, 0.53);
+  background: linear-gradient(
+      to top,
+      rgba(147, 168, 182, 0.9),
+      rgba(105, 112, 124, 0.85)
+    ),
+    url("../assets/PokePattern.png");
+  background-size: 100px;
+}
+
+.cssShown {
+  opacity: 1;
+  width: 200px;
+  margin: 15px;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 0px 24px -5px rgba(0, 0, 0, 0.53);
+  box-shadow: 0px 0px 24px -5px rgba(0, 0, 0, 0.53);
+  background: linear-gradient(
+      to top,
+      rgba(147, 168, 182, 0.9),
+      rgba(105, 112, 124, 0.85)
+    ),
+    url("../assets/PokePattern.png");
+  background-size: 100px;
 }

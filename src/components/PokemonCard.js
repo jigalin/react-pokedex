@@ -12,6 +12,7 @@ const PokemonCard = ({
   togglePokeFav,
   shinyToggle,
   updateFavCount,
+  enteredVar,
 }) => {
   const [localFav, setLocalFav] = useState([individualPokemon.isFav]);
   const [localShinyShown, setLocalShinyShown] = useState([
@@ -56,70 +57,74 @@ const PokemonCard = ({
   };
 
   return (
-    <div
-      className={typeVar}
-      style={{
-        zIndex: 0,
-      }}
-    >
+    <div styleName={""}>
       <div
+        className={typeVar}
         style={{
-          width: "100%",
-          display: "flex",
-          position: "absolute",
-          top: 0,
-          justifyContent: "space-between",
+          zIndex: 0,
         }}
       >
-        <div style={{}}>
-          <button className="btn-small">
-            <img
-              className="btn-small-img"
-              src={
-                individualPokemon.shinyShown ? ShinyBtnClicked : ShinyBtnDefault
-              }
-              alt="heart"
-              onClick={triggerToggleShiny}
-            />
-          </button>
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            position: "absolute",
+            top: 0,
+            justifyContent: "space-between",
+          }}
+        >
+          <div style={{}}>
+            <button className="btn-small">
+              <img
+                className="btn-small-img"
+                src={
+                  individualPokemon.shinyShown
+                    ? ShinyBtnClicked
+                    : ShinyBtnDefault
+                }
+                alt="heart"
+                onClick={triggerToggleShiny}
+              />
+            </button>
+          </div>
+          <div style={{}}>
+            <button className="btn-small">
+              <img
+                className="btn-small-img"
+                src={localFav ? heartBtnDefault : heartBtnClicked}
+                alt="heart"
+                onClick={triggerToggleFav}
+              />
+            </button>
+          </div>
         </div>
-        <div style={{}}>
-          <button className="btn-small">
-            <img
-              className="btn-small-img"
-              src={localFav ? heartBtnDefault : heartBtnClicked}
-              alt="heart"
-              onClick={triggerToggleFav}
-            />
-          </button>
+        <img
+          className="poke-img"
+          src={individualPokemon.shinyShown ? shinyImg : pokeImg}
+          alt={individualPokemon.name}
+        />
+        <h3 className="poke-name">{individualPokemon.name}</h3>
+        <Button
+          styleName="btn-default"
+          text={
+            individualPokemon.sprites.front_default === pokeImg
+              ? "VIEW BACK"
+              : "VIEW FRONT"
+          }
+          onClick={showBack}
+        />
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            position: "absolute",
+            bottom: 0,
+            justifyContent: "space-between",
+            zIndex: -1,
+          }}
+        >
+          <div className="poke-bottom-card"></div>
         </div>
-      </div>
-      <img
-        className="poke-img"
-        src={individualPokemon.shinyShown ? shinyImg : pokeImg}
-        alt={individualPokemon.name}
-      />
-      <h3 className="poke-name">{individualPokemon.name}</h3>
-      <Button
-        styleName="btn-default"
-        text={
-          individualPokemon.sprites.front_default === pokeImg
-            ? "VIEW BACK"
-            : "VIEW FRONT"
-        }
-        onClick={showBack}
-      />
-      <div
-        style={{
-          width: "100%",
-          display: "flex",
-          position: "absolute",
-          bottom: 0,
-          justifyContent: "space-between",
-          zIndex: -1,
-        }}
-      >
-        <div className="poke-bottom-card"></div>
       </div>
     </div>
   );

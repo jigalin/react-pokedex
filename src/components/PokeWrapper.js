@@ -4,6 +4,7 @@ import PokemonCard from "./PokemonCard";
 import Button from "./Button";
 import CoolSearchBar from "./CoolSearchBar";
 import PokemonViewerLogo from "../assets/PokemonViewer.png";
+import searchIcon from "../assets/search.png";
 
 const ContentPage = ({
   allPokemonData,
@@ -15,6 +16,9 @@ const ContentPage = ({
   const [shownPokemonData, setShownPokemonData] = useState(allPokemonData);
   const [favCount, setFavCount] = useState(0);
   const [showFavsOnly, setShowFavsOnly] = useState(false);
+  const [showFireOnly, setShowFireOnly] = useState(false);
+  const [enteredVar, setEnteredVar] = useState(true);
+  const [cssFade, setCssFade] = useState("cssHidden");
 
   const updateFavCount = (int) => {
     console.log(favCount + int);
@@ -41,8 +45,28 @@ const ContentPage = ({
     }
   };
 
+  // BELOW: Working Logic for
+  // const showFireFunc = () => {
+  //   if (showFireOnly === false) {
+  //     let fire = [];
+  //     fire = shownPokemonData.filter((data) => {
+  //       return data.types[0].type.name === "fire";
+  //     });
+  //     setShownPokemonData(fire);
+  //     setShowFireOnly(true);
+  //   } else {
+  //     setShownPokemonData(allPokemonData);
+  //     setShowFireOnly(false);
+  //   }
+  // };
+
+  const enter = () => {
+    setEnteredVar(false);
+    setCssFade("cssShown");
+  };
+
   return (
-    <div>
+    <div style={{ minHeight: "800px" }}>
       <div
         style={{
           display: "flex",
@@ -52,6 +76,8 @@ const ContentPage = ({
           paddingBottom: "40px",
           alignItems: "center",
           alignContent: "flex-start",
+          transition: "opacity 2s",
+          opacity: enteredVar ? "0.1" : "1",
         }}
       >
         <div style={{ display: "flex", alignItems: "center" }}>
@@ -65,13 +91,13 @@ const ContentPage = ({
           />
           <Button
             onClick={showFavsFunc}
-            text={showFavsOnly ? "Hide Favourites" : "Show Favourites"}
+            text={showFavsOnly ? "Hide Faves" : "Show Faves"}
             styleName="btn-onwhite"
           />
           <Button
             onClick={showAllShiny}
             text={shinyShowState ? "Show Shinies" : "Hide Shinies"}
-            styleName="btn-onwhite-secondary"
+            styleName="btn-onwhite"
           />
         </div>
         <div>
@@ -79,6 +105,26 @@ const ContentPage = ({
         </div>
       </div>
       <div className="content-wrapper">
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            position: "absolute",
+            margin: "auto",
+            top: 0,
+            justifyContent: "center",
+            paddingTop: "470px",
+            zIndex: enteredVar ? 2 : -1,
+          }}
+        >
+          <div>
+            <Button
+              onClick={enter}
+              text="Enter Pokemon Viewer"
+              styleName="btn-enter"
+            ></Button>
+          </div>
+        </div>
         <div style={{ width: "100%" }}>
           {showFavsOnly && (
             <h1
@@ -92,17 +138,32 @@ const ContentPage = ({
             </h1>
           )}
         </div>
-        {shownPokemonData.map((individualPokemon) => {
-          return (
-            <PokemonCard
-              key={individualPokemon.name}
-              individualPokemon={individualPokemon}
-              togglePokeFav={togglePokeFav}
-              shinyToggle={shinyToggle}
-              updateFavCount={updateFavCount}
-            />
-          );
-        })}
+        <div
+          style={{
+            width: "100%",
+            display: "flex",
+            alignContent: "flex-start",
+            flexWrap: "wrap",
+            justifyContent: "center",
+            paddingLeft: "20px",
+            paddingRight: "20px",
+            transition: "opacity 2s",
+            opacity: enteredVar ? "0.1" : "1",
+          }}
+        >
+          {shownPokemonData.map((individualPokemon) => {
+            return (
+              <PokemonCard
+                key={individualPokemon.name}
+                individualPokemon={individualPokemon}
+                togglePokeFav={togglePokeFav}
+                shinyToggle={shinyToggle}
+                updateFavCount={updateFavCount}
+                enteredVar={enteredVar}
+              />
+            );
+          })}
+        </div>
       </div>
     </div>
   );

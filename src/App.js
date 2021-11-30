@@ -28,7 +28,7 @@ function App() {
   const fetchAllPokemonNames = async () => {
     try {
       const response = await fetch(
-        "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=100"
+        "https://pokeapi.co/api/v2/pokemon/?offset=0&limit=200"
       );
       const pokemonNames = await response.json();
       setAllPokemonNames(pokemonNames.results);
