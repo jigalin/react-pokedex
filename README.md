@@ -1,6 +1,7 @@
 <div align="center">
   <h1>🌿🔥<br>React Pokedex</h1>
   <h3>A basic react one-pager showcasing REST interaction</h3>
+  <h3><a href="https://jig-pokemonviewer.netlify.app/" target="_blank">Live Preview</a></h3>
 </div>
 
 <div align="center"><img src="https://user-images.githubusercontent.com/29565530/144050909-de512f97-3e38-4e69-9597-5d7eeceea3d3.gif" /></div>
