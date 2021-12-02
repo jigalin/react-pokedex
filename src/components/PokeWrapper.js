@@ -101,7 +101,7 @@ const ContentPage = ({
           />
           <Button
             onClick={showFavsFunc}
-            text={showFavsOnly ? "Hide Faves" : "Show Faves"}
+            text={showFavsOnly ? "Hide Favourites" : "Show Favourites"}
             styleName="btn-onwhite"
           />
           <Button
